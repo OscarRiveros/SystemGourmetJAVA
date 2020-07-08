@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="82a45a68-4016-4cd4-b0cc-77f1e7d63287">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="producto" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     recetas.`idreceta` AS recetas_idreceta,
+     recetas.`descripcion` AS recetas_descripcion,
+     recetas.`cantidad` AS recetas_cantidad,
+     productos.`idproducto` AS productos_idproducto,
+     productos.`descripcion` AS productos_descripcion,
+     productos.`idmedida` AS productos_idmedida,
+     medida.`idmedida` AS medida_idmedida,
+     medida.`descripcion` AS medida_descripcion
+FROM
+     `productos` productos INNER JOIN `recetas` recetas ON productos.`idproducto` = recetas.`idinsumo`
+     INNER JOIN `medida` medida ON productos.`idmedida` = medida.`idmedida`
+where tipo='insumo' and recetas.descripcion=$P{producto}]]>
+	</queryString>
+	<field name="recetas_idreceta" class="java.lang.Integer"/>
+	<field name="recetas_descripcion" class="java.lang.String"/>
+	<field name="recetas_cantidad" class="java.lang.Integer"/>
+	<field name="productos_idproducto" class="java.lang.Integer"/>
+	<field name="productos_descripcion" class="java.lang.String"/>
+	<field name="productos_idmedida" class="java.lang.Integer"/>
+	<field name="medida_idmedida" class="java.lang.Integer"/>
+	<field name="medida_descripcion" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#000000" uuid="2d2ad44f-5e47-4343-ac8f-e67dac293b05"/>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="904f88bd-15eb-4584-b265-8f41d7c6c688"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="20" y="42" width="180" height="50" forecolor="#FFFFFF" uuid="10030f2f-cffd-4e37-bab2-f550a5888d5f"/>
+					<textElement textAlignment="Center">
+						<font size="26" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{producto}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="7449ccdd-367c-4e22-b4f1-1d5378d53b21"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="d58b21aa-6cd2-48bc-9359-dff4661362b2"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="150b2e8c-296f-489d-b08b-a2f1d613bd2a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ingredientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="5eba9d72-679d-42fc-bd76-da9e8856a74b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="51e32e0f-9876-4e9f-9a8a-e6194000013d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medida]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="3adb0d7f-544d-4e5f-b88d-c719bc9e63bd"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="44" y="0" width="56" height="20" uuid="1bff1760-744e-4445-bd66-816ec60b5876"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productos_idproducto}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="330" y="0" width="74" height="20" uuid="a7b8ccf2-8c0f-4082-a3e7-f10d7bed60fb"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recetas_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="454" y="0" width="61" height="20" uuid="a37c2862-d7d2-4055-8c14-950fdad89312"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medida_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="170" y="0" width="106" height="20" uuid="6c6aa101-219c-45d4-b8bf-c29040b3b06c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productos_descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="7e2bd800-aed5-4d61-85dc-abd00c0a142d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="1ca63242-3099-4e43-9a69-0dc09cffd0ea"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="302f46e4-cb9f-4001-a981-d8e516a463e3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

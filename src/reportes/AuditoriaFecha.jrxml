@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6006968c-8f5e-46aa-83cd-9e681709b207">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaUno" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaDos" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     auditoria.`evento` AS auditoria_evento,
+     auditoria.`fecha` AS auditoria_fecha,
+     auditoria.`hora` AS auditoria_hora,
+     auditoria.`tabla` AS auditoria_tabla,
+     auditoria.`tipo` AS auditoria_tipo,
+     empleado.`usuario` AS empleado_usuario,
+     empleado.`cinro` AS empleado_cinro
+FROM
+     `auditoria` auditoria,
+     `empleado` empleado
+ 
+where fecha between $P{fechaUno} and $P{fechaDos} and (auditoria.idusuario=empleado.idempleado)]]>
+	</queryString>
+	<field name="auditoria_evento" class="java.lang.String"/>
+	<field name="auditoria_fecha" class="java.sql.Date"/>
+	<field name="auditoria_hora" class="java.lang.String"/>
+	<field name="auditoria_tabla" class="java.lang.String"/>
+	<field name="auditoria_tipo" class="java.lang.String"/>
+	<field name="empleado_usuario" class="java.lang.String"/>
+	<field name="empleado_cinro" class="java.lang.String"/>
+	<group name="auditoria_fecha">
+		<groupExpression><![CDATA[$F{auditoria_fecha}]]></groupExpression>
+		<groupHeader>
+			<band height="53">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="32" forecolor="#000000" backcolor="#E6E6E6" uuid="f827c795-721e-4481-9543-f5dc6ddd32be"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{auditoria_fecha}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="33" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="b599034d-d2f6-4c6b-8408-7ec1faca03e4"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[evento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="92" y="33" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="4895da7a-fae5-478f-b69b-d21aa11bc665"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[hora]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="184" y="33" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="79f3a672-e5b3-422b-b341-0ff3a6110ea4"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[tabla]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="276" y="33" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="a99f75fb-51bf-4025-b7f5-088e8623fd87"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[tipo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="368" y="33" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="e17f008b-dea8-437c-ba46-a5db6f199a9a"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[usuario]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="460" y="33" width="95" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="c1ff4dc7-330c-4234-a520-7e5eef642cbf"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[cinro]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="100" y="1" width="131" height="32" forecolor="#E6E6E6" backcolor="#E6E6E6" uuid="bca071df-292d-4fc2-837f-dbdcb9ce0745"/>
+				</rectangle>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="f98f262c-2e1f-4cea-9370-056c190f9f7e"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#000000" uuid="eadcce07-4c6e-4803-8632-c2d97b6a1786"/>
+				<staticText>
+					<reportElement x="20" y="20" width="344" height="43" forecolor="#FFFFFF" uuid="c0cd6bab-1fd4-4ad3-9460-9e7d1fe44676"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Auditoria Por Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="92be02f6-1490-41f6-b71d-36dbfa13b4f5"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="12"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="9d6ac186-fb25-4872-8409-125d341dcf01"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="6448f5b9-bdfc-4be2-a433-3a6cb4344f88"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="92" height="20" uuid="641cce90-be52-4c2a-8f5e-83b14b6f65c2"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditoria_evento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="92" y="0" width="92" height="20" uuid="40e75066-c6e9-4cca-a379-f26bac1ba446"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditoria_hora}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="184" y="0" width="92" height="20" uuid="e34c5c40-5b08-485b-a354-efdda0dc7e31"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditoria_tabla}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="92" height="20" uuid="e3ddb79c-6823-41d1-9c49-20c227764c31"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditoria_tipo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="368" y="0" width="92" height="20" uuid="18703a78-fb24-4fdb-9946-9c54f942ddb1"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empleado_usuario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="460" y="0" width="92" height="20" uuid="631f8bf7-2f97-407f-b3d7-1cb0339cac46"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empleado_cinro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="881ac018-aa53-41a2-9cf7-ba43724741fc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="b762dc75-481b-49a8-89d5-eee900bba1f3"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="8f4ed3bc-936c-40e5-a72e-f3a1beb88ef4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

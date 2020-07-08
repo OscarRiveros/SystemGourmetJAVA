@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca4c22ed-2b58-4e61-ae7e-07e2174e2c15">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     empleado.`idempleado` AS empleado_idempleado,
+     empleado.`nombre` AS empleado_nombre,
+     empleado.`apellido` AS empleado_apellido,
+     empleado.`cargo` AS empleado_cargo,
+     empleado.`sueldo` AS empleado_sueldo,
+     empleado.`nivel` AS empleado_nivel,
+     empleado.`usuario` AS empleado_usuario,
+     empleado.`contraseña` AS empleado_contraseña,
+     empleado.`cinro` AS empleado_cinro,
+     empleado.`estado` AS empleado_estado,
+     empleado.`idciudad` AS empleado_idciudad,
+     ciudad.`idciudad` AS ciudad_idciudad,
+     ciudad.`descripcion` AS ciudad_descripcion,
+     ciudad.`estado` AS ciudad_estado,
+     ciudad.`iddepartamento` AS ciudad_iddepartamento,
+     departamento.`iddepartamento` AS departamento_iddepartamento,
+     departamento.`descripcion` AS departamento_descripcion,
+     departamento.`estado` AS departamento_estado,
+     departamento.`idregion` AS departamento_idregion,
+     region.`idregion` AS region_idregion,
+     region.`descripcion` AS region_descripcion,
+     region.`estado` AS region_estado
+FROM
+     `ciudad` ciudad INNER JOIN `empleado` empleado ON ciudad.`idciudad` = empleado.`idciudad`
+     INNER JOIN `departamento` departamento ON ciudad.`iddepartamento` = departamento.`iddepartamento`
+     INNER JOIN `region` region ON departamento.`idregion` = region.`idregion`]]>
+	</queryString>
+	<field name="empleado_idempleado" class="java.lang.Integer"/>
+	<field name="empleado_nombre" class="java.lang.String"/>
+	<field name="empleado_apellido" class="java.lang.String"/>
+	<field name="empleado_cargo" class="java.lang.String"/>
+	<field name="empleado_sueldo" class="java.lang.Integer"/>
+	<field name="empleado_usuario" class="java.lang.String"/>
+	<field name="empleado_contraseña" class="java.lang.String"/>
+	<field name="empleado_cinro" class="java.lang.String"/>
+	<field name="ciudad_descripcion" class="java.lang.String"/>
+	<field name="departamento_descripcion" class="java.lang.String"/>
+	<field name="departamento_estado" class="java.lang.Integer"/>
+	<field name="region_descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="ba45954b-8a01-4270-b9d6-af4070290cd9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Lista de Empleados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="d88a775c-71ce-4289-b11f-5c4635caba93"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="14" width="555" height="20" forecolor="#999999" backcolor="#999999" uuid="60838f2f-1ddc-4751-893d-c46e3636b413"/>
+			</rectangle>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="3c77447f-cc60-4c97-9094-037ff428f3d3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="46" height="15" forecolor="#000000" uuid="9fb9acd3-c7b3-4c2b-9828-a73eb161368f"/>
+				<text><![CDATA[Cod.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="59" y="21" width="79" height="15" forecolor="#000000" uuid="337a3a37-562e-4c7e-ac9d-30de1b43d8cb"/>
+				<text><![CDATA[Empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="19" width="46" height="15" forecolor="#000000" uuid="12025203-5d89-4483-9a7a-be82aee08a5e"/>
+				<text><![CDATA[Cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="197" y="21" width="46" height="15" forecolor="#000000" uuid="7d576f34-231e-497d-b47d-fb7e94481c4a"/>
+				<text><![CDATA[Sueldo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="263" y="19" width="46" height="15" forecolor="#000000" uuid="7c7d817b-6ab3-476c-9f2b-bdd3ea203fb7"/>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="322" y="19" width="65" height="15" forecolor="#000000" uuid="fb398f8c-d239-42d5-81b6-505d68491edd"/>
+				<text><![CDATA[Cedula/RUC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="387" y="21" width="46" height="15" forecolor="#000000" uuid="e8a57ab6-adfd-4f52-8172-7b2bff6e1763"/>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="443" y="19" width="46" height="15" forecolor="#000000" uuid="9f352568-d306-4bda-9ad5-93f4c1902e9e"/>
+				<text><![CDATA[Departamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="506" y="19" width="46" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="425d38bb-1352-4fc4-901f-9de60996d981"/>
+				<text><![CDATA[Region]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="46" height="16" forecolor="#FFFFFF" backcolor="#999999" uuid="2535f23e-ce34-4790-bcf4-2c83c9e105c1"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Detail" x="0" y="1" width="46" height="15" forecolor="#000000" backcolor="#999999" uuid="8fffedc1-460a-430b-9816-fd16a20814fb"/>
+				<textFieldExpression><![CDATA[$F{empleado_idempleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="46" y="0" width="46" height="15" uuid="3fff6bb3-6fb4-46b1-a7d0-a07e8b4c2059"/>
+				<textFieldExpression><![CDATA[$F{empleado_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="0" width="46" height="15" uuid="20f688cc-42de-48a2-8091-becdeac1f215"/>
+				<textFieldExpression><![CDATA[$F{empleado_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="0" width="59" height="15" uuid="ed025f21-7d7e-4066-b22d-3f607e5b5226"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{empleado_cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="197" y="0" width="46" height="15" uuid="6ed44d5b-0f08-482c-ac30-c38bac5cf01e"/>
+				<textFieldExpression><![CDATA[$F{empleado_sueldo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="263" y="0" width="46" height="15" uuid="8c55c8e8-358e-4b76-8baf-e65493f650c9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{empleado_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="387" y="0" width="46" height="15" uuid="cac63c79-3916-463b-bab5-fa64d448e429"/>
+				<textFieldExpression><![CDATA[$F{ciudad_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="506" y="0" width="46" height="15" uuid="4d86db69-4f4b-4901-812e-8fde87be9d6b"/>
+				<textFieldExpression><![CDATA[$F{region_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="443" y="1" width="46" height="15" uuid="05dc2c2a-50b8-4643-abf4-91747bdf7feb"/>
+				<textFieldExpression><![CDATA[$F{departamento_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="322" y="1" width="46" height="15" uuid="ab7c8dd6-7dfa-4e5f-a3a1-ce932e15b055"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{empleado_cinro}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="-2" width="555" height="1" forecolor="#999999" uuid="9a4f994e-db67-46ee-8345-13b28d42f43a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="43698f3b-166e-42b3-a6e8-fe130ba79300"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="76475197-a9e4-46dc-98ae-97d492fc36e8"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="debb2a57-e4cb-477b-95d8-25d6a07a7764"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="2e4552af-1e00-46c7-bf75-e6ae23256e54"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

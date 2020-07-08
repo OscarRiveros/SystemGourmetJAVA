@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="443e537e-ad4e-40b5-a20f-806de7ee48fc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="evento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     auditoria.`idauditoria` AS auditoria_idauditoria,
+     auditoria.`idusuario` AS auditoria_idusuario,
+     auditoria.`evento` AS auditoria_evento,
+     auditoria.`fecha` AS auditoria_fecha,
+     auditoria.`hora` AS auditoria_hora,
+     auditoria.`tabla` AS auditoria_tabla,
+     auditoria.`tipo` AS auditoria_tipo,
+     empleado.`nombre` AS empleado_nombre,
+     empleado.`apellido` AS empleado_apellido,
+     empleado.`cargo` AS empleado_cargo,
+     empleado.`sueldo` AS empleado_sueldo,
+     empleado.`nivel` AS empleado_nivel,
+     empleado.`usuario` AS empleado_usuario,
+     empleado.`contrasena` AS empleado_contrasena,
+     empleado.`cinro` AS empleado_cinro,
+     empleado.`estado` AS empleado_estado,
+     empleado.`idciudad` AS empleado_idciudad
+FROM
+     `auditoria` auditoria,
+     `empleado` empleado
+where auditoria.idusuario=empleado.idempleado and evento=$P{evento}]]>
+	</queryString>
+	<field name="auditoria_idauditoria" class="java.lang.Integer"/>
+	<field name="auditoria_idusuario" class="java.lang.String"/>
+	<field name="auditoria_evento" class="java.lang.String"/>
+	<field name="auditoria_fecha" class="java.sql.Date"/>
+	<field name="auditoria_hora" class="java.lang.String"/>
+	<field name="auditoria_tabla" class="java.lang.String"/>
+	<field name="auditoria_tipo" class="java.lang.String"/>
+	<field name="empleado_nombre" class="java.lang.String"/>
+	<field name="empleado_apellido" class="java.lang.String"/>
+	<field name="empleado_cargo" class="java.lang.String"/>
+	<field name="empleado_sueldo" class="java.lang.Integer"/>
+	<field name="empleado_nivel" class="java.lang.Integer"/>
+	<field name="empleado_usuario" class="java.lang.String"/>
+	<field name="empleado_contrasena" class="java.lang.String"/>
+	<field name="empleado_cinro" class="java.lang.String"/>
+	<field name="empleado_estado" class="java.lang.Integer"/>
+	<field name="empleado_idciudad" class="java.lang.Integer"/>
+	<group name="auditoria_evento">
+		<groupExpression><![CDATA[$F{auditoria_evento}]]></groupExpression>
+		<groupHeader>
+			<band height="53">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="32" width="111" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="380e41b9-571b-4b6e-99c3-4f30c0c92a1a"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[usuario]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="444" height="32" forecolor="#000000" backcolor="#E6E6E6" uuid="b678d2e2-5388-4127-9d90-e494b42890b3"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{auditoria_evento}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="baa09619-71b0-4040-8c88-9abd0222b3e7"/>
+				</line>
+				<staticText>
+					<reportElement mode="Opaque" x="111" y="33" width="128" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="013a8dfc-19fe-4988-8977-1a2dc6f9e517"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="239" y="33" width="111" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="83e7d035-6003-4ec4-89aa-42ece66769a9"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[hora]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="350" y="33" width="111" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="6e6bdaf3-9194-4920-a035-b773332f4445"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[tabla]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#000000" uuid="417c21bc-c686-459f-b8f3-fdb81af51577"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="ec711b20-de88-4e09-b515-6dabb869ba2e"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Evento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="2cd733cf-f491-45dc-898a-1e03b08f6067"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="22edc863-1b5f-43d8-820b-1f961e8ab63d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="4695c053-6003-42cd-8295-18927d10c7a3"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="111" y="0" width="123" height="20" uuid="c16b648d-6352-4ed5-80cb-3eab9b723d32"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditoria_fecha}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="234" y="0" width="111" height="20" uuid="44f23207-02fa-49be-b492-2171d54c6e2b"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditoria_hora}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="350" y="0" width="111" height="20" uuid="74f7a156-fd91-4048-92e0-f20027d84527"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditoria_tabla}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="111" height="20" uuid="b90fb949-08c3-4993-bf39-b9a431a3e3a7"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empleado_usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="13fa6bec-a69f-4014-a214-0c936a9d0fc3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="dc9761e0-add4-4d95-8172-582422c40aa6"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="b60a75c9-921e-4d12-8d91-5ce6ef814e4e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
